@@ -1,7 +1,7 @@
 package de.gie.tool.commontasks.url.alias;
 
 
-import de.gie.tool.commontasks.exception.ApiRequestException;
+import de.gie.tool.commontasks.general.exception.ApiRequestException;
 import de.gie.tool.commontasks.url.alias.model.AliasDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
