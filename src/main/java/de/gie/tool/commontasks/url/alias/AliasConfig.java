@@ -22,15 +22,15 @@ The example given below shows how to implement the Command Line Runner interface
 @OpenAPIDefinition(info = @Info(title = "Url-tool API", version = "1.0",description = "Url tool microservice"))
 public class AliasConfig {
 
-    @Bean
-    CommandLineRunner commandLineRunner(AliasRepository repository){
-        return args -> {
-            Alias find = new Alias("https://www.google.co.id/",
-                    "findSomething");
-            Alias ask = new Alias("https://stackoverflow.com/",
-                    "askSomething");
-
-            repository.saveAll(List.of(find, ask));
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(AliasRepository repository){
+//        return args -> {
+//            Alias find = new Alias("https://www.google.co.id/",
+//                    "findSomething");
+//            Alias ask = new Alias("https://stackoverflow.com/",
+//                    "askSomething");
+//
+//            repository.saveAll(List.of(find, ask));
+//        };
+//    }
 }
