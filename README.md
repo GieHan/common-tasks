@@ -63,7 +63,7 @@ $ mvn clean package
 ```
 4. Containerize the project
 ```bash
-$ docker build -f Dockerfile -t url-tool .
+$ docker build -f Dockerfile -t common-tasks-service .
 ```
 5. Check if the image already on list
 ```bash
@@ -71,7 +71,7 @@ $ docker image ls
 ```
 6. Then we can run the image
 ```bash
-$ docker run --name url-tool-test -e SPRING_DATASOURCE_URL='database_url' -e SPRING_DATASOURCE_USERNAME='database_user_name' -e SPRING_DATASOURCE_PASSWORD='database_password' -p 8080:8080 url-tool
+$ docker run --name common-tasks-service-test -e SPRING_DATASOURCE_URL='database_url' -e SPRING_DATASOURCE_USERNAME='database_user_name' -e SPRING_DATASOURCE_PASSWORD='database_password' -e APP_JWTSECRETKEY='some_secret_key' -p 8080:8080 common-tasks-service
 ```
 <br>
 
