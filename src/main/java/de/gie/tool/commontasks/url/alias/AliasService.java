@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
     Bussiness logic
@@ -29,25 +30,26 @@ public class AliasService {
     public Boolean add(AliasDTO aliasDTO){
 
         // check if aliasName already there
-        if (aliasRepository.findByAliasName(aliasDTO.getAliasName()).size() != 0 ) {
+        if (!aliasRepository.findByAliasName(aliasDTO.getAliasName()).isEmpty()) {
             return false;
         }
 
-        Alias newAlias = new Alias(aliasDTO.getLongUrl(), aliasDTO.getAliasName(), aliasDTO.getDuration());
-        return aliasRepository.save(newAlias) != null;
+        Alias newAlias          = new Alias(aliasDTO.getLongUrl(), aliasDTO.getAliasName(), aliasDTO.getDuration());
+        Optional<Alias> created = Optional.of(aliasRepository.save(newAlias));
+        return  created.isPresent();
     }
 
     public boolean delete(){
         return false;
     }
 
-    public String getLongUrl(String shortName){
+    public Optional<String> getLongUrl(String shortName){
         List<Alias> foundedAliases = aliasRepository.findByAliasName(shortName);
         if (foundedAliases.size() != 1){
-            return null;
+            return Optional.empty();
         }
 
-        return foundedAliases.get(0).getLongUrl();
+        return Optional.ofNullable(foundedAliases.get(0).getLongUrl());
     }
 
 

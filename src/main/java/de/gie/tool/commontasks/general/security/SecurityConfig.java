@@ -53,7 +53,7 @@ public class SecurityConfig {
                     .authorizeRequests()
                     .antMatchers("/auth/**")
                     .permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/v1/alias")
+                    .antMatchers(HttpMethod.GET, "/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated()

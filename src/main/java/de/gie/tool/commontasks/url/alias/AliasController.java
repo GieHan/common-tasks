@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/alias")
@@ -25,18 +26,18 @@ public class AliasController {
         this.aliasService = aliasService;
     }
 
-    @GetMapping
-    public ResponseEntity<Object> redirect(@RequestParam String name){
+//    @GetMapping
+    public ResponseEntity<HttpHeaders> redirect(String name){
         HttpHeaders httpHeaders = new HttpHeaders();
-        String longUrl          = aliasService.getLongUrl(name);
+        Optional<String> longUrl          = aliasService.getLongUrl(name);
 
 
-        if (longUrl == null){
+        if (longUrl.isEmpty()){
             throw new ApiRequestException("No alias for " + name, HttpStatus.NOT_FOUND);
         }
 
         try {
-            URI redirectionURI      = new URI(longUrl);
+            URI redirectionURI      = new URI(longUrl.get());
             httpHeaders.setLocation(redirectionURI);
         } catch (URISyntaxException e) {
             throw new ApiRequestException("Something wrong with URI", HttpStatus.INTERNAL_SERVER_ERROR);
