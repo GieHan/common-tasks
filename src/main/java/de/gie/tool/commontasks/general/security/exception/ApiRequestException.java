@@ -1,4 +1,4 @@
-package de.gie.tool.commontasks.general.exception;
+package de.gie.tool.commontasks.general.security.exception;
 
 import org.springframework.http.HttpStatus;
 
