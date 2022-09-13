@@ -19,7 +19,7 @@ The example given below shows how to implement the Command Line Runner interface
 
  */
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "Url-tool API", version = "1.0",description = "Url tool microservice"))
+@OpenAPIDefinition(info = @Info(title = "Common-Tasks API", version = "1.0",description = "Url tool microservice"))
 public class AliasConfig {
 
 //    @Bean
